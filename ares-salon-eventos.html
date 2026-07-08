@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salón de Eventos Ares — Cochabamba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1f160f;
+    --ink-2:#2b2013;
+    --gold:#b8763f;
+    --gold-soft:#d9a86a;
+    --rose:#a8763e;
+    --cream:#f4ead9;
+    --cream-dim:#d9cdb8;
+    --line: rgba(244,234,217,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* ===== NAV ===== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 40px;
+    background:linear-gradient(to bottom, rgba(36,22,32,0.92), transparent);
+    transition:background 0.3s ease;
+  }
+  nav .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.35rem;
+    font-weight:700;
+    letter-spacing:0.03em;
+  }
+  nav .brand span{color:var(--gold);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul li a{
+    font-size:0.85rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--cream-dim);
+    transition:color 0.2s;
+  }
+  nav ul li a:hover{color:var(--gold);}
+  .nav-cta{
+    display:inline-block;
+    padding:10px 22px;
+    border:1px solid var(--gold);
+    border-radius:2px;
+    font-size:0.8rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--gold) !important;
+  }
+  @media(max-width:820px){
+    nav ul{display:none;}
+    nav{padding:18px 20px;}
+  }
+
+  /* ===== GARLAND SIGNATURE DIVIDER ===== */
+  .garland{
+    width:100%;
+    display:block;
+    margin: -1px 0;
+  }
+  .garland .bulb{
+    animation: glow 3.4s ease-in-out infinite;
+  }
+  .garland .bulb:nth-child(3n){animation-delay:0.6s;}
+  .garland .bulb:nth-child(3n+1){animation-delay:1.2s;}
+  @keyframes glow{
+    0%,100%{opacity:0.55;}
+    50%{opacity:1;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .garland .bulb{animation:none;opacity:0.9;}
+  }
+
+  /* ===== HERO ===== */
+  header.hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding-top:110px;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,164,76,0.16), transparent),
+      radial-gradient(ellipse 80% 60% at 80% 100%, rgba(201,107,120,0.10), transparent),
+      var(--ink);
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image: radial-gradient(circle, rgba(244,234,217,0.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity:0.5;
+  }
+  .hero-inner{position:relative;z-index:2;}
+  .hero .eyebrow{margin-bottom:22px;display:flex;align-items:center;gap:14px;}
+  .hero .eyebrow::before{
+    content:"";width:34px;height:1px;background:var(--gold);display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(3rem, 8vw, 6.4rem);
+    line-height:0.98;
+    color:var(--cream);
+    max-width:900px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-soft);
+    font-weight:500;
+  }
+  .hero p.lead{
+    margin-top:28px;
+    max-width:520px;
+    font-size:1.1rem;
+    color:var(--cream-dim);
+    font-weight:300;
+  }
+  .hero-ctas{
+    margin-top:44px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--gold);
+    color:var(--ink) !important;
+    padding:16px 30px;
+    font-weight:600;
+    font-size:0.92rem;
+    letter-spacing:0.02em;
+    border-radius:2px;
+    transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);background:var(--gold-soft);}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:10px;
+    border:1px solid var(--line);
+    color:var(--cream) !important;
+    padding:16px 30px;
+    font-size:0.92rem;
+    border-radius:2px;
+    transition:border-color 0.2s ease;
+  }
+  .btn-ghost:hover{border-color:var(--gold);}
+
+  .hero-stats{
+    margin-top:90px;
+    display:flex;
+    gap:64px;
+    flex-wrap:wrap;
+  }
+  .hero-stats .stat b{
+    font-family:'Fraunces', serif;
+    font-size:2.4rem;
+    color:var(--gold-soft);
+    display:block;
+    font-weight:600;
+  }
+  .hero-stats .stat span{
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--cream-dim);
+  }
+
+  /* ===== SECTION GENERIC ===== */
+  section{
+    padding:120px 0;
+    position:relative;
+  }
+  .section-head{
+    max-width:640px;
+    margin-bottom:64px;
+  }
+  .section-head .eyebrow{margin-bottom:16px;display:block;}
+  .section-head h2{
+    font-size:clamp(2.1rem, 4vw, 3.1rem);
+    color:var(--cream);
+  }
+  .section-head p{
+    margin-top:18px;
+    color:var(--cream-dim);
+    font-weight:300;
+    font-size:1.05rem;
+  }
+
+  /* ===== ABOUT ===== */
+  #nosotros{background:var(--ink-2);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:80px;
+    align-items:start;
+  }
+  .about-grid p{
+    color:var(--cream-dim);
+    font-weight:300;
+    margin-bottom:18px;
+    font-size:1.02rem;
+  }
+  .quote-card{
+    border-left:2px solid var(--gold);
+    padding:28px 0 28px 28px;
+  }
+  .quote-card p{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.25rem;
+    color:var(--cream);
+    font-weight:400;
+    line-height:1.5;
+  }
+  .quote-card cite{
+    display:block;
+    margin-top:16px;
+    font-style:normal;
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.05em;
+    color:var(--gold);
+  }
+  @media(max-width:860px){
+    .about-grid{grid-template-columns:1fr;gap:40px;}
+  }
+
+  /* ===== SERVICIOS ===== */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--ink);
+    padding:44px 36px;
+    transition:background 0.3s ease;
+    position:relative;
+  }
+  .service-card:hover{background:var(--ink-2);}
+  .service-card .icon{
+    width:44px;height:44px;
+    margin-bottom:26px;
+  }
+  .service-card h3{
+    font-size:1.3rem;
+    color:var(--cream);
+    margin-bottom:10px;
+    font-weight:600;
+  }
+  .service-card p{
+    color:var(--cream-dim);
+    font-size:0.95rem;
+    font-weight:300;
+  }
+  @media(max-width:900px){
+    .services-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:600px){
+    .services-grid{grid-template-columns:1fr;}
+  }
+
+  /* ===== ESPACIO / GALLERY (illustrated, no stock photos) ===== */
+  #espacio{background:var(--ink-2);}
+  .space-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:repeat(2,220px);
+    gap:14px;
+  }
+  .space-tile{
+    border-radius:2px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:20px;
+    border:1px solid var(--line);
+  }
+  .space-tile span{
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--cream);
+    position:relative;
+    z-index:2;
+  }
+  .space-tile.big{grid-column:span 2;grid-row:span 2;}
+  .space-tile.wide{grid-column:span 2;}
+  @media(max-width:900px){
+    .space-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,180px);}
+    .space-tile.big{grid-column:span 2;grid-row:span 1;}
+  }
+
+  /* ===== PAQUETES ===== */
+  .packages{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .package-card{
+    border:1px solid var(--line);
+    padding:40px 32px;
+    border-radius:2px;
+    position:relative;
+  }
+  .package-card.featured{
+    border-color:var(--gold);
+    background:linear-gradient(180deg, rgba(201,164,76,0.06), transparent);
+  }
+  .package-card .tag{
+    position:absolute;top:-13px;right:32px;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:'Space Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.05em;
+    padding:5px 12px;
+    text-transform:uppercase;
+  }
+  .package-card h3{
+    font-size:1.5rem;
+    margin-bottom:16px;
+    color:var(--cream);
+  }
+  .package-card ul{
+    list-style:none;
+    margin-top:22px;
+  }
+  .package-card ul li{
+    padding:10px 0;
+    border-top:1px solid var(--line);
+    color:var(--cream-dim);
+    font-size:0.92rem;
+    font-weight:300;
+  }
+  .package-card ul li:first-child{border-top:none;}
+  @media(max-width:900px){
+    .packages{grid-template-columns:1fr;}
+  }
+
+  /* ===== CONTACT ===== */
+  #contacto{
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(201,164,76,0.12), transparent),
+      var(--ink-2);
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+  }
+  .contact-item{
+    padding:22px 0;
+    border-top:1px solid var(--line);
+  }
+  .contact-item:last-child{border-bottom:1px solid var(--line);}
+  .contact-item .eyebrow{display:block;margin-bottom:8px;}
+  .contact-item div.value{
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+    color:var(--cream);
+  }
+  .map-frame{
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+    min-height:340px;
+  }
+  .map-frame iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(0.4) invert(0.92) contrast(0.9);}
+  @media(max-width:900px){
+    .contact-grid{grid-template-columns:1fr;gap:40px;}
+  }
+
+  footer{
+    padding:48px 0;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  footer .brand{font-family:'Fraunces', serif;font-weight:700;font-size:1.1rem;}
+  footer .brand span{color:var(--gold);}
+  footer p{color:var(--cream-dim);font-size:0.85rem;}
+
+  /* floating whatsapp */
+  .float-wa{
+    position:fixed;
+    bottom:26px;right:26px;
+    z-index:200;
+    background:var(--gold);
+    color:var(--ink);
+    width:58px;height:58px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    transition:transform 0.2s ease;
+  }
+  .float-wa:hover{transform:scale(1.08);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">SALÓN DE EVENTOS <span>ARES</span></div>
+  <ul>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Eventos</a></li>
+    <li><a href="#espacio">Espacio</a></li>
+    <li><a href="#paquetes">Paquetes</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a class="nav-cta" href="https://wa.me/59179382822" target="_blank">Reservar</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Salón de eventos · Cochabamba, Bolivia</div>
+    <h1>Cada celebración<br>merece su <em>escenario.</em></h1>
+    <p class="lead">Hace más de 7 años recibimos bodas, quinceaños, bautizos y encuentros empresariales en un espacio versátil, cómodo y pensado para que solo te ocupes de disfrutar.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="https://wa.me/59179382822" target="_blank">Cotizar mi evento →</a>
+      <a class="btn-ghost" href="https://www.facebook.com/story.php?story_fbid=608969943785359&id=100063860558174&rdid=hc203GNBYY6uIVFZ" target="_blank" rel="noopener">Conocer el salón</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>7+</b><span>años de trayectoria</span></div>
+      <div class="stat"><b>100+</b><span>eventos realizados</span></div>
+      <div class="stat"><b>40–120</b><span>capacidad de invitados</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- garland divider -->
+<svg class="garland" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0,10 C150,70 250,70 400,20 C550,-20 650,60 800,20 C950,-10 1050,60 1200,10" fill="none" stroke="rgba(201,164,76,0.35)" stroke-width="1.5"/>
+  <g fill="#b8763f">
+    <circle class="bulb" cx="40" cy="22" r="4"/>
+    <circle class="bulb" cx="160" cy="46" r="4"/>
+    <circle class="bulb" cx="280" cy="46" r="4"/>
+    <circle class="bulb" cx="400" cy="20" r="4"/>
+    <circle class="bulb" cx="520" cy="-2" r="4"/>
+    <circle class="bulb" cx="640" cy="30" r="4"/>
+    <circle class="bulb" cx="760" cy="45" r="4"/>
+    <circle class="bulb" cx="880" cy="15" r="4"/>
+    <circle class="bulb" cx="1000" cy="-4" r="4"/>
+    <circle class="bulb" cx="1120" cy="40" r="4"/>
+  </g>
+</svg>
+
+<section id="nosotros">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow">Nosotros</span>
+        <h2>Un espacio con historia<br>familiar y experiencia real.</h2>
+      </div>
+      <p style="margin-top:28px;">Salón de Eventos Ares nació hace más de 7 años en Cochabamba con un objetivo claro: brindar una experiencia satisfactoria y única a través del alquiler de instalaciones modernas, cómodas y versátiles.</p>
+      <p>Diseñamos cada detalle para que se adapte a todo tipo de celebración social o empresarial: desde una boda íntima hasta una fiesta de quince años llena de música y color. Nuestro mayor valor es la satisfacción de quienes confían en nosotros para el día que llevarán en la memoria.</p>
+    </div>
+    <div class="quote-card">
+      <p>"El local es bastante agradable, la localización es lo máximo, pienso volver para un próximo evento, y los dueños son bastante amables y atentos."</p>
+      <cite>— David V., cliente ARES</cite>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Tipos de eventos</span>
+      <h2>Un salón, todas las ocasiones.</h2>
+      <p>Adaptamos ambientación, mobiliario y horarios según el tipo de celebración que estés preparando.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="services-grid">
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 44 44" fill="none"><path d="M22 6 L22 20 M14 20h16a2 2 0 012 2v2H12v-2a2 2 0 012-2z" stroke="#b8763f" stroke-width="1.6"/><path d="M22 6a4 4 0 100 0z" stroke="#b8763f" stroke-width="1.6"/><circle cx="22" cy="9" r="3" stroke="#b8763f" stroke-width="1.6"/><path d="M10 38h24" stroke="#b8763f" stroke-width="1.6"/><path d="M14 24v14M30 24v14" stroke="#b8763f" stroke-width="1.6"/></svg>
+        <h3>Bodas</h3>
+        <p>Ceremonias y recepciones con espacio para banquete, pista de baile y decoración a medida.</p>
+      </div>
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 44 44" fill="none"><path d="M22 4v10" stroke="#b8763f" stroke-width="1.6"/><path d="M22 14c-6 0-9 5-9 10v16h18V24c0-5-3-10-9-10z" stroke="#b8763f" stroke-width="1.6"/><circle cx="22" cy="7" r="2.4" fill="#b8763f"/></svg>
+        <h3>Quinceaños</h3>
+        <p>El salón se transforma para la fiesta que marca los quince: pista, luces y ambiente para bailar el vals.</p>
+      </div>
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="14" r="7" stroke="#b8763f" stroke-width="1.6"/><path d="M22 21v10M15 40c0-6 3-9 7-9s7 3 7 9" stroke="#b8763f" stroke-width="1.6"/></svg>
+        <h3>Bautizos</h3>
+        <p>Encuentros familiares íntimos o numerosos, con áreas cómodas para grandes y chicos.</p>
+      </div>
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 44 44" fill="none"><rect x="8" y="12" width="28" height="22" rx="1" stroke="#b8763f" stroke-width="1.6"/><path d="M8 18h28" stroke="#b8763f" stroke-width="1.6"/><path d="M14 12V8M30 12V8" stroke="#b8763f" stroke-width="1.6"/></svg>
+        <h3>Eventos empresariales</h3>
+        <p>Directorios, capacitaciones y celebraciones corporativas con montaje tipo auditorio o banquete.</p>
+      </div>
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 44 44" fill="none"><path d="M22 8c3 3 3 6 0 9-3-3-3-6 0-9z" stroke="#b8763f" stroke-width="1.6"/><path d="M10 22c4-2 8-2 12 0s8 2 12 0" stroke="#b8763f" stroke-width="1.6"/><path d="M22 17v23" stroke="#b8763f" stroke-width="1.6"/></svg>
+        <h3>Cumpleaños</h3>
+        <p>De cumpleaños a celebraciones de aniversario, con espacio para baile y catering.</p>
+      </div>
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 44 44" fill="none"><path d="M8 30c4-10 10-16 14-16s10 6 14 16" stroke="#b8763f" stroke-width="1.6"/><path d="M14 30h16" stroke="#b8763f" stroke-width="1.6"/><path d="M22 14V8" stroke="#b8763f" stroke-width="1.6"/></svg>
+        <h3>Revelaciones y despedidas</h3>
+        <p>Baby showers, revelación de sexo y despedidas de soltera con montaje temático.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="espacio">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">El espacio</span>
+      <h2>Ambientes pensados<br>para cada momento del evento.</h2>
+      <p>Salón principal, mezanine, patio de recepción - ambientes que se combinan según el tamaño y estilo de tu celebración.</p>
+    </div>
+    <div class="space-grid">
+      <div class="space-tile big" style="background:linear-gradient(135deg,#3a2a1a,#1f160f);">
+        <span>Salón principal — hasta 120 personas</span>
+      </div>
+      <div class="space-tile wide" style="background:linear-gradient(135deg,#33241a,#1f160f);">
+        <span>Mezanine</span>
+      </div>
+      <div class="space-tile" style="background:linear-gradient(135deg,#2b2013,#1f160f);">
+        <span>Pista de baile</span>
+      </div>
+      <div class="space-tile" style="background:linear-gradient(135deg,#3a2a1a,#2b2013);">
+        <span>Patio de recepción</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="paquetes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Paquetes</span>
+      <h2>Una propuesta para cada presupuesto.</h2>
+      <p>Estos son puntos de partida — cada paquete se ajusta contigo según número de invitados y fecha.</p>
+    </div>
+    <div class="packages">
+      <div class="package-card">
+        <h3>Solo Salón</h3>
+        <p style="color:var(--cream-dim);font-weight:300;">La base ideal si ya tienes decoración y catering resueltos.</p>
+        <ul>
+          <li>Desde 40 hasta 120 invitados</li>
+          <li>Salón</li>
+          <li>Mobiliario básico incluido</li>
+          <li>Mantelería</li>
+          <li>Cristalería</li>
+          <li>Personal de servicio según cantidad de personas</li>
+          <li>8 horas de evento</li>
+        </ul>
+      </div>
+      <div class="package-card featured">
+        <span class="tag">Más elegido</span>
+        <h3>Básico</h3>
+        <p style="color:var(--cream-dim);font-weight:300;">Todo lo del paquete Solo Salón, con amplificación incluida.</p>
+        <ul>
+          <li>Desde 40 hasta 120 invitados</li>
+          <li>Salón</li>
+          <li>Mobiliario básico incluido</li>
+          <li>Mantelería</li>
+          <li>Cristalería</li>
+          <li>Amplificación</li>
+          <li>Personal de servicio según cantidad de personas</li>
+          <li>8 horas de evento</li>
+        </ul>
+      </div>
+      <div class="package-card">
+        <h3>Paquetes</h3>
+        <p style="color:var(--cream-dim);font-weight:300;">La experiencia completa, montada a la medida de tu evento.</p>
+        <ul>
+          <li>Desde 40 hasta 120 invitados</li>
+          <li>Salón</li>
+          <li>Mobiliario básico incluido</li>
+          <li>Montaje según especificaciones y tipo de evento</li>
+          <li>Mantelería</li>
+          <li>Cristalería</li>
+          <li>Variación de bebidas según selección</li>
+          <li>Catering</li>
+          <li>Amplificación</li>
+          <li>Personal de servicio según cantidad de personas</li>
+          <li>8 horas de evento</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- garland divider reversed -->
+<svg class="garland" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0,50 C150,-10 250,-10 400,40 C550,80 650,0 800,40 C950,70 1050,0 1200,50" fill="none" stroke="rgba(201,164,76,0.35)" stroke-width="1.5"/>
+  <g fill="#b8763f">
+    <circle class="bulb" cx="40" cy="38" r="4"/>
+    <circle class="bulb" cx="160" cy="14" r="4"/>
+    <circle class="bulb" cx="280" cy="14" r="4"/>
+    <circle class="bulb" cx="400" cy="40" r="4"/>
+    <circle class="bulb" cx="520" cy="62" r="4"/>
+    <circle class="bulb" cx="640" cy="30" r="4"/>
+    <circle class="bulb" cx="760" cy="15" r="4"/>
+    <circle class="bulb" cx="880" cy="45" r="4"/>
+    <circle class="bulb" cx="1000" cy="64" r="4"/>
+    <circle class="bulb" cx="1120" cy="20" r="4"/>
+  </g>
+</svg>
+
+<section id="contacto">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:36px;">
+        <span class="eyebrow">Contacto</span>
+        <h2>Conversemos sobre<br>tu próximo evento.</h2>
+      </div>
+      <div class="contact-item">
+        <span class="eyebrow">WhatsApp</span>
+        <div class="value"><a href="https://wa.me/59179382822" target="_blank">+591 79382822</a></div>
+      </div>
+      <div class="contact-item">
+        <span class="eyebrow">Ubicación</span>
+        <div class="value">Calle Inti Raymi entre Av. Simón López y Wiracocha<br>Cochabamba, Bolivia</div>
+      </div>
+      <div class="contact-item">
+        <span class="eyebrow">Visitas al salón</span>
+        <div class="value">Agenda tu cita previa</div>
+      </div>
+      <div style="margin-top:36px;">
+        <a class="btn-primary" href="https://wa.me/59179382822" target="_blank">Escribir por WhatsApp →</a>
+      </div>
+    </div>
+    <div class="map-frame">
+      <iframe src="https://maps.google.com/maps?q=Cochabamba,Bolivia&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;width:100%;">
+    <div class="brand">SALÓN DE EVENTOS <span>ARES</span></div>
+    <p>© 2026 Salón de Eventos Ares · Cochabamba, Bolivia</p>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/59179382822" target="_blank" aria-label="Escribir por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2z" stroke="#1f160f" stroke-width="1.6"/><path d="M8.5 8.5c-.3 1 .1 2.4 1.5 4 1.4 1.4 2.9 1.9 4 1.6l.9-1.4-2-1.1-.6.8c-.8-.2-1.6-.8-2.2-1.5-.7-.6-1.2-1.4-1.4-2.2l.8-.6-1.1-2-1 .9z" fill="#1f160f"/></svg>
+</a>
+
+</body>
+</html>
